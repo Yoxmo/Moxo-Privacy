@@ -1,49 +1,460 @@
 <!DOCTYPE html>
-<html lang="zxx" class="uk-background-white dark:uk-background-gray-100 dark:uk-text-gray-20 bp-xs bp-s bp-m-max bp-l-max bp-xl-max dom-ready">
-    
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<html lang="en">
+
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Contact - MoxoAI</title>
-        <meta name="description" content="This is a contact page description">
-        <meta name="theme-color" content="#741ff5">
+    <meta charset="UTF-8">
+    <title>Moxo - WaitList</title>
 
-        <!-- preload head styles -->
-        <link rel="preload" href="./assets/css/brand-icons.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="./assets/css/Unicons.woff" as="font" type="font/woff" crossorigin>
-        <link rel="preload" href="./assets/css/swiper.css" as="style">
-        <link rel="preload" href="./assets/css/uikit.css" as="style">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            font-family: inherit;
+        }
 
-        <!-- <link rel="preload" href=".../assets/css/theme/main.min.css" as="style"> -->
+        :root {
+            --bg-1: #160136;
+            --bg-2: #59374e;
+            --bg-3: #98646c;
+            --bg-4: #784464;
+            --bg-5: #885c5c;
+            --bg-6: #D059A0;
 
-        <!-- preload footer scripts -->
-        <link rel="preload" href="./assets/js/uikit.min.js" as="script">
-        <link rel="preload" href="./assets/js/uikit-components.js" as="script">
-        <link rel="preload" href="./assets/js/jquery.min.js" as="script">
-        <link rel="preload" href="./assets/js/swiper-bundle.min.js" as="script">
-        <link rel="preload" href="./assets/js/feather.min.js" as="script">
-        <link rel="preload" href="./assets/js/typed.min.js" as="script">
-        <link rel="preload" href="./assets/js/anime.min.js" as="script">
-        <link rel="preload" href="./assets/js/app.js" as="script">
-        <link rel="preload" href="./assets/js/swiper-helper.js" as="script">
-        <link rel="preload" href="./assets/js/typed-helper.js" as="script">
-        <link rel="preload" href="./assets/js/anime-helper.js" as="script">
-        <link rel="preload" href="./assets/js/anime-helper-defined-timelines.js" as="script">
+            --pink-1: #fccfe3;
+            --pink-2: #ba99a6;
+            --pink-3: #f0bcc4;
 
-        <!-- include styles -->
-        <script src="./assets/js/app-head.js"></script>
-        <link rel="stylesheet" href="./assets/css/main.min.css">
+            --purple-1: #684280;
+            --purple-2: #471360;
+            --purple-3: #381c44;
+            --purple-4: #683464;
 
-        <!-- include scripts -->
-        <script src="./assets/js/uikit.min.js"></script>
-        <script src="./assets/js/uikit-components.js"></script>
-    </head>
-    <body class="uni-body">
-        <script>
-           window.parent.location.replace("https://moxoai.com/dashboard");
-         </script>
-    </body>
+            --head-height: 110vh;
+            --head-top: 5em;
 
+            --form-width: 40em;
+            --form-gap: 10%;
+            --form-height: 2.7em;
+
+            --back-height: 11em;
+            --back-cols: 4;
+            --fig-pad: 0 2%;
+
+            --miss-height: 50em;
+            --present-height: 45em;
+            --pres-col-gap: 20%;
+            --box-height: 22em;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 1.9vw;
+            overflow-x: hidden;
+        }
+
+        @media (max-width: 800px) {
+            body {
+                font-size: 18px;
+            }
+
+            :root {
+                --form-width: 500px;
+                --form-gap: 50px;
+                --form-height: 2.5em;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                font-size: 14px;
+            }
+
+            :root {
+                --form-width: 90%;
+                --form-gap: 5%;
+                --head-top: 7em;
+                --miss-height: 50em;
+                --present-height: 45em;
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                font-size: 13px;
+            }
+
+            :root {
+                --form-width: 93%;
+                --form-gap: 4%;
+                --head-top: 8em;
+                --back-height: 25em;
+                --back-cols: 2;
+                --fig-pad: calc(var(--back-height) / 2 * 0.1) 10%;
+                --present-height: 50em;
+                --box-height: 26em;
+            }
+        }
+
+        @media (max-width: 400px) {
+            body {
+                font-size: 11px;
+            }
+
+            :root {
+                --form-height: 3.3em;
+                --form-width: 95%;
+                --form-gap: 3%;
+                --head-top: 15em;
+            }
+        }
+
+        @media (max-width: 300px) {
+            body {
+                font-size: 9px;
+            }
+        }
+
+        header {
+            position: relative;
+            width: 100vw;
+            height: var(--head-height);
+            padding-top: var(--head-top);
+            margin: 0;
+
+            background: linear-gradient(var(--bg-1) 80%, var(--bg-2));
+        }
+
+        #head-inner {
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            grid-template-rows: 7em 2em var(--form-height);
+            row-gap: 0.5em;
+
+            width: 100%;
+            height: 50%;
+        }
+
+        h1,
+        h2 {
+            width: fit-content;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--pink-1);
+            font-size: 5em;
+        }
+
+        h2 {
+            color: white;
+            font-size: 1.7em;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-around;
+
+            width: var(--form-width);
+            height: 100%;
+            margin-top: 2em;
+            font-size: 0.9em;
+        }
+
+        form input {
+            border: none;
+            border-radius: 0.8em;
+            height: 100%;
+            font-weight: 600;
+        }
+
+        #wl-email {
+            width: 50%;
+            padding-left: 0.8em;
+
+            background-color: var(--pink-2);
+            color: var(--purple-1);
+        }
+
+        #wl-email::placeholder {
+            color: var(--purple-1);
+        }
+
+        #wl-join {
+            width: calc(40% - var(--form-gap));
+            background-color: var(--purple-1);
+            color: #EEEEEE;
+            text-shadow: 0 2px #CCC;
+        }
+
+        .arrow {
+            position: absolute;
+
+            bottom: 15%;
+            width: 100vw;
+
+            display: flex;
+            justify-content: center;
+            font-size: 0;
+        }
+
+        .arrow>div {
+            display: inline-block;
+            position: relative;
+            width: 20px;
+            height: 4px;
+            border-radius: 2px;
+
+            margin: 0;
+            background-color: #DDD
+        }
+
+        .left-arrow {
+            position: relative;
+            left: 1.5px;
+            transform-origin: right center;
+            transform: rotate(50deg);
+        }
+
+        .right-arrow {
+            position: relative;
+            right: 1.5px;
+            transform-origin: left center;
+            transform: rotate(-50deg);
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+
+    <div id="body">
+        <header>
+            <div id="head-inner">
+               <h1 style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Moxo ai.</h1>
+               <h2 style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">Your one stop for all things ai. <br> Join today!</h2>
+               
+               <form action="#" method="post" style="translate: none;rotate: none;scale: none;transform: translate(0px, 20px);justify-content: center;opacity: 1;">
+                  
+                  <input type="email" name="email" id="wl-email" placeholder="Email">
+                  
+                  <button type="button" onclick="displaySavedToast(document.getElementById('wl-email').value)" style="
+                     border-radius: 0.8em;
+                     margin-left: 20px;
+                     border: none;
+                     background: #6413d6;
+                     color: #fffffffa;
+                     font-weight: 600;
+                     min-width: 120px;
+                     "> Join Waitlist </button>
+               </form>
+            </div>
+            <div class="arrow" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+               <!-- <img src="https://i.ibb.co/4MMKD6f/down-arrow-56.png" alt="V" width=30> -->
+            </div>
+         </header>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script>
+        // Define a function to display a toast notification
+        function displaySavedToast(email) {
+
+            if(email.includes("@")){
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "https://moxoai.com/api/waitlist", true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.send(JSON.stringify({email: email}));
+
+                Toastify({
+                    text: "Thanks, " + email + " has been added to the waitlist! 🎉",
+                    duration: 3000,
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "left", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                    },
+                    onClick: function(){} // Callback after click
+                    }).showToast();
+                    
+            } else {
+                
+                Toastify({
+                    text: "Please enter a valid email address",
+                    duration: 3000,
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "left", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "linear-gradient(to right, #ff6347, #dc143c)",
+                    },
+                    onClick: function(){} // Callback after click
+                }).showToast();
+                return;
+            }
+            
+        }
+
+        //document.querySelector('button').addEventListener('click', displaySavedToast);
+
+    </script>
+
+    <script>
+        $("document").ready(function () {
+            $("#boxes").scrollLeft($("#boxes").width() / 2);
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            $(window).scrollTop(0);
+
+            var tl = gsap.timeline({ defaults: { duration: 0.7 } });
+
+            tl.from("header h1", {
+                delay: 0.4,
+                opacity: 0,
+                scale: 0.9,
+                y: -20
+            });
+
+            tl.from("header h2", {
+                delay: 0.3,
+                opacity: 0,
+                scale: 0.9,
+                y: -20
+            });
+
+            tl.from(
+                "form",
+                {
+                    opacity: 0,
+                    scale: 0.9,
+                    y: -20
+                },
+                "<30%"
+            );
+
+            tl.from(".arrow > *", {
+                y: -25,
+                opacity: 0,
+                ease: "power2.out"
+            });
+
+            tl.to(".arrow", {
+                opacity: 0,
+                y: 25,
+                scrollTrigger: {
+                    trigger: "header",
+                    start: "90.9% bottom",
+                    end: "+=100",
+                    scrub: true
+                }
+            });
+
+            gsap.fromTo(
+                "#box-1",
+                {
+                    scale: 0.75
+                },
+                {
+                    scale: 0.9,
+                    scrollTrigger: {
+                        scroller: "#boxes",
+                        trigger: "#boxes",
+                        start: "0% left",
+                        end: "+=60%",
+                        horizontal: true,
+                        scrub: true,
+                        snap: {
+                            snapTo: 1,
+                            duration: { min: 0.2, max: 0.5 },
+                            delay: 0
+                        }
+                    }
+                }
+            );
+
+            gsap.fromTo(
+                "#box-1",
+                {
+                    scale: 0.9
+                },
+                {
+                    scale: 0.75,
+                    scrollTrigger: {
+                        scroller: "#boxes",
+                        trigger: "#boxes",
+                        start: "160% right",
+                        end: "+=60%",
+                        horizontal: true,
+                        scrub: true,
+                        snap: {
+                            snapTo: 1,
+                            duration: { min: 0.2, max: 0.5 },
+                            delay: 0
+                        }
+                    }
+                }
+            );
+
+            gsap.fromTo(
+                "#box-2",
+                {
+                    scale: 0.9
+                },
+                {
+                    scale: 0.75,
+                    scrollTrigger: {
+                        scroller: "#boxes",
+                        trigger: "#boxes",
+                        start: "0% left",
+                        end: "+=60%",
+                        horizontal: true,
+                        scrub: true
+                    }
+                }
+            );
+            gsap.fromTo(
+                "#box-3",
+                {
+                    scale: 0.75
+                },
+                {
+                    scale: 0.9,
+                    scrollTrigger: {
+                        scroller: "#boxes",
+                        trigger: "#boxes",
+                        start: "160% right",
+                        end: "+=60%",
+                        horizontal: true,
+                        scrub: true
+                    }
+                }
+            );
+        });
+    </script>
+
+</body>
 
 </html>
